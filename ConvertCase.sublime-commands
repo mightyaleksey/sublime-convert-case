@@ -1,0 +1,10 @@
+[
+  {
+    "caption": "Convert Case: Camel Case",
+    "command": "convert_case_camel_case"
+  },
+  {
+    "caption": "Convert Case: Snake Case",
+    "command": "convert_case_snake_case"
+  }
+]
