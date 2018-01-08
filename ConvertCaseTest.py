@@ -13,6 +13,10 @@ class UtilsTests(unittest.TestCase):
     string = ConvertCaseUtils.convert_to_camel_case(['convert', 'case', 'utils'])
     self.assertEqual(string, 'convertCaseUtils')
 
+  def test_kebab_case(self):
+    string = ConvertCaseUtils.convert_to_kebab_case(['convert', 'case', 'utils'])
+    self.assertEqual(string, 'convert-case-utils')
+
   def test_snake_case(self):
     string = ConvertCaseUtils.convert_to_snake_case(['convert', 'case', 'utils'])
     self.assertEqual(string, 'convert_case_utils')

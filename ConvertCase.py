@@ -13,6 +13,10 @@ class ConvertCaseUtils:
       return parts[0] + ''.join(map(lambda p: p.capitalize(), parts[1:]))
 
   @staticmethod
+  def convert_to_kebab_case(parts):
+    return '-'.join(parts);
+
+  @staticmethod
   def convert_to_snake_case(parts):
     return '_'.join(parts)
 
@@ -25,6 +29,11 @@ class ConvertCaseUtils:
     string = self.view.substr(region)
     parts = self.extract_parts(string)
     return (self.convert_to_camel_case(parts), region)
+
+  def region_to_kebab_case(self, region):
+    string = self.view.substr(region)
+    parts = self.extract_parts(string)
+    return (self.convert_to_kebab_case(parts), region)
 
   def region_to_snake_case(self, region):
     string = self.view.substr(region)
@@ -44,6 +53,14 @@ class ConvertCaseUtils:
 class ConvertCaseCamelCaseCommand(ConvertCaseUtils, sublime_plugin.TextCommand):
   def run(self, edit):
     strings = tuple(map(self.region_to_camel_case, self.regions()))
+
+    for string, region in reversed(strings):
+      self.view.replace(edit, region, string)
+
+
+class ConvertCaseKebabCaseCommand(ConvertCaseUtils, sublime_plugin.TextCommand):
+  def run(self, edit):
+    strings = tuple(map(self.region_to_kebab_case, self.regions()))
 
     for string, region in reversed(strings):
       self.view.replace(edit, region, string)

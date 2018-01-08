@@ -4,6 +4,10 @@
     "command": "convert_case_camel_case"
   },
   {
+    "caption": "Convert Case: Kebab Case",
+    "command": "convert_case_kebab_case"
+  },
+  {
     "caption": "Convert Case: Snake Case",
     "command": "convert_case_snake_case"
   }
